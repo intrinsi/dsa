@@ -1,33 +1,40 @@
-// Binary Search in C
-
-#include <stdio.h>
-
-int binarySearch(int array[], int x, int low, int high) {
-  // Repeat until the pointers low and high meet each other
-  while (low <= high) {
-    int mid = low + (high - low) / 2;
-
-    if (array[mid] == x)
-      return mid;
-
-    if (array[mid] < x)
-      low = mid + 1;
-
-    else
-      high = mid - 1;
-  }
-
-  return -1;
-}
-
-int main(void) {
-  int array[] = {3, 4, 5, 6, 7, 8, 9};
-  int n = sizeof(array) / sizeof(array[0]);
-  int x = 4;
-  int result = binarySearch(array, x, 0, n - 1);
-  if (result == -1)
-    printf("Not found");
-  else
-    printf("Element is found at index %d", result);
-  return 0;
+#include<stdio.h>
+#include<stdlib.h>
+int search(int [], int ,int);
+int main(void){
+    int a[40],n,ele,index=-1;
+    printf("Enter the size of array:");
+    scanf("%d",&n);
+    printf("Enter the elements:");
+    for (int  i = 0; i < n; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("Enter the element to search");
+    scanf("%d",&ele);
+    index = search(a,n,ele);
+    if (index==-1){
+        printf("Element is not found");
+    }
+    else{
+        printf("%d",index);
+    }
+} 
+    int search(int a[], int n, int ele){
+        int f=0,l=n-1,mid;
+        while (f<=l){
+            mid=(f+l)/2;
+            if (a[mid]==ele){
+              return mid;
+            }
+            else if(a[mid]<ele){
+                f=mid+1;
+            }
+            else{
+                l=mid-1;
+            }
+            
+        }
+            
+        return -1;
 }
